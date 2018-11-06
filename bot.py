@@ -52,7 +52,7 @@ def handle_command(command, channel):
         hash = command.replace('submit ', '', 1)
         if str(len(hash)) in ["32", "40", "64"]:
             data = {"strings": hash.encode('utf8'), "timeout": 60}
-            resp = requests.post(api + '/tasks/create/submit', headers=headers, data=data) 
+            resp = requests.post(api + '/tasks/create/submit', data=data) 
             try:
                 resp_content = json.loads(resp.content)
                 response = "Thanks for submitting! Your task ID is: {}".format(resp_content['task_ids'][0])
@@ -63,7 +63,7 @@ def handle_command(command, channel):
             response = "Please submit a valid hash"
     elif command.startswith("status"):
         id = command.replace('status ', '', 1)
-        resp = requests.get(api + '/tasks/view/{}'.format(id), headers=headers)
+        resp = requests.get(api + '/tasks/view/{}'.format(id))
         try:
             resp_content = resp.json()
             response = '''
@@ -72,7 +72,7 @@ def handle_command(command, channel):
         except:
             response = "An error occurred looking up the task id"
     elif command.startswith("health"):
-        resp = requests.get(api + '/cuckoo/status/', headers=headers)
+        resp = requests.get(api + '/cuckoo/status/')
         try:
             resp_content = resp.json()
             if resp_content.get('message') == "Internal server error":
@@ -83,7 +83,7 @@ def handle_command(command, channel):
             response = "An error occurred getting current health"
     elif command.startswith("score"):
         id = command.replace('score ', '', 1)
-        resp = requests.get(api + '/tasks/report/{}'.format(id), headers=headers)
+        resp = requests.get(api + '/tasks/report/{}'.format(id))
         try:
             resp_content = resp.json()
             if resp_content.get('signatures'):
@@ -106,8 +106,7 @@ def handle_command(command, channel):
     slack_client.api_call(
         "chat.postMessage",
         channel=channel,
-        text=response or default_response,
-        attachments=attachments
+        text=response or default_response
     )
 
 if __name__ == "__main__":
