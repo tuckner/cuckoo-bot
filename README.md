@@ -1,7 +1,7 @@
 # About
 Simple Slack bot to submit hashes to a Cuckoo Sandbox instance.
 
-Methods:
+## Methods:
 
 ```
 @bot submit <hash>
