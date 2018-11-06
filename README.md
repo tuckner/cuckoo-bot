@@ -21,3 +21,8 @@ View the current status of the sample being analyzed
 
 View the score given to the sample after processing.  Will also provide any signature detection matches.
 
+```
+@bot health
+```
+
+View the current status/health of the API
