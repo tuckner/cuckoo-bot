@@ -1,6 +1,17 @@
 # About
 Simple Slack bot to submit hashes to a Cuckoo Sandbox instance.
 
+## Setup:
+
+1. Create a bot user in Slack and copy the OAuth credentials (https://api.slack.com/bot-users#creating-bot-user)
+
+2. Set the environment variable for 'slack_client' with the OAuth credentials.
+
+3. Set the environment variable for 'cuckoo' with the Cuckoo API URL.
+
+4. If using Docker, fill these in the Dockerfile and build the container.
+
+
 ## Methods:
 
 ```
