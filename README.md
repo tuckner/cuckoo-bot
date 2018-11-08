@@ -20,6 +20,8 @@ Simple Slack bot to submit hashes to a Cuckoo Sandbox instance.
 
 Cuckoo will use it's VTI key to download the hash given and return a taskid.
 
+![](https://s3-us-west-2.amazonaws.com/f5elk/cuckoo2.png)
+
 ```
 @bot status <taskid>
 ```
@@ -31,6 +33,8 @@ View the current status of the sample being analyzed
 ```
 
 View the score given to the sample after processing.  Will also provide any signature detection matches.
+
+![](https://s3-us-west-2.amazonaws.com/f5elk/cuckoo1.png)
 
 ```
 @bot health
